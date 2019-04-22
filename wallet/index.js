@@ -18,9 +18,9 @@ class Wallet {
     return this.keyPair.sign(dataHash);
   }
 
-  createTransaction(speed, gps, alert, recipient, transactionPool) {
+  createTransaction(speed, gps, alert, response, recipient, transactionPool) {
   
-    let transaction = Transaction.newTransaction(speed,gps,alert, this, recipient);
+    let transaction = Transaction.newTransaction(speed,gps,alert, response, this, recipient);
     transactionPool.updateOrAddTransaction(transaction);
 
   return transaction;

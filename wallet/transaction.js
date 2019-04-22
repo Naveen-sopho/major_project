@@ -7,30 +7,18 @@ class Transaction {
     this.outputs = [];
   }
 
- /** update(speed, gps, alert,senderWallet, recipient) {
-	const senderOutput = this.outputs.find(output => output.address === senderWallet.publicKey);
-
-  if (amount > senderOutput.amount) {
-    console.log(`Amount: ${amount} exceeds balance.`);
-    return;
-  }
-
-  senderOutput.amount = senderOutput.amount - amount;
-  this.outputs.push({ amount, address: recipient });
-  Transaction.signTransaction(this, senderWallet);
-
-  return this;
-}**/
+ 
 
 
-  static newTransaction(speed, gps, alert,senderWallet,recipient) {
+  static newTransaction(speed, gps, alert, response, senderWallet, recipient) {
     const transaction = new this();
     var oppush = {};
     oppush['Speed'] = speed;
     oppush['GPS'] = gps;
     oppush['Alert'] = alert;
+    oppush['Response'] = response;
     oppush['Violated_vehicle'] = recipient;
-    //var oppush = ['Speed':speed,'Gps': gps, alert,recipient];
+   
 
     transaction.outputs.push(oppush);
 

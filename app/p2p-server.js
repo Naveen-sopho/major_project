@@ -6,11 +6,14 @@ const MESSAGE_TYPES = {
   transaction: 'TRANSACTION'
 }; 
 
+
 class P2pServer {
+
   constructor(blockchain, transactionPool) {
     this.blockchain = blockchain;
     this.transactionPool = transactionPool;
     this.sockets = [];
+
   }
 
   listen() {
@@ -31,6 +34,7 @@ class P2pServer {
   connectSocket(socket) {
     this.sockets.push(socket);
     console.log('Socket connected');
+    require('../app/smartcontract').scount++;
     this.messageHandler(socket);
     this.sendChain(socket);
   }
