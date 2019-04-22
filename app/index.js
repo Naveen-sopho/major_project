@@ -36,6 +36,9 @@ app.post('/transact', (req, res) => {
 	res.redirect('/transactions');
 });
 
+app.get('/balance',(req,res)=>{
+	res.json({Balance: wallet.balance});
+});
 app.get('/public-key', (req, res) => {
 	res.json({ publicKey: wallet.publicKey});
 });

@@ -18,6 +18,10 @@ class Wallet {
     return this.keyPair.sign(dataHash);
   }
 
+  addbalance(addwallet,addamount)
+  {
+    this.addwallet.balance += addamount;
+  }
   createTransaction(speed, gps, alert, response, recipient, transactionPool) {
   
     let transaction = Transaction.newTransaction(speed,gps,alert, response, this, recipient);

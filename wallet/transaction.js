@@ -18,8 +18,6 @@ class Transaction {
     oppush['Alert'] = alert;
     oppush['Response'] = response;
     oppush['Violated_vehicle'] = recipient;
-   
-
     transaction.outputs.push(oppush);
 
     Transaction.signTransaction(transaction, senderWallet);
@@ -33,7 +31,6 @@ class Transaction {
   		signature: senderWallet.sign(ChainUtil.hash(transaction.outputs)) 
   	}
   }
-
   static verifyTransaction(transaction) {
 	return ChainUtil.verifySignature(
 		transaction.input.address,
