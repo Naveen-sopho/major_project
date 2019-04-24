@@ -1,11 +1,19 @@
 var keys = [];
 var bals = [];
+var polkey = '040ebbafa2b0320a84e563ea1ee079e8d9cfbd9cc325a3859c413acf4425dbbb5ecc337fea492a99783854d3d86e37e144cc570cc5c018edad137b16bae56f9161';
+var polbal = 0;
 
 class TransactionPool {
   constructor() {
     this.transactions = [];
+    this.addif = 0;
   }
 
+  clear ()
+  {
+    this.transactions=[];
+    this.addif =0;
+  }
   updateOrAddTransaction(transaction) {
     let transactionWithId = this.transactions.find(t => t.id === transaction.id);
     if (transactionWithId) {
@@ -86,13 +94,15 @@ class TransactionPool {
       yc = yc * 100;
       if(yc/tc>60)
       {
+        this.addif = 1;
          var index ;
         for(var k in keys)
         {
           if(vivehi == keys[k])
           {
               index = k;
-              bals[index]= bals[index] - 10;
+              bals[index]= bals[index] - 20;
+              polbal = polbal + 10;
           }
         }
 
@@ -114,7 +124,7 @@ class TransactionPool {
 
           }
           cnt++;
-          this.transactions = [];
+          //this.transactions = [];
 
           
         }
@@ -123,14 +133,12 @@ class TransactionPool {
       }
 
     }
-    for(var s in keys)
+    for(let s=0 ; s< keys.length;s++)
     {
-      console.log(keys[s].substring(0,6));
+      console.log('car with id - ',keys[s].substring(0,6),' Balance : ', bals[s]);
     }
-    for(var s in bals)
-    {
-      console.log(bals[s]);
-    }
+
+    console.log('Police Wallet Balance : ',polbal);
     
   }
 

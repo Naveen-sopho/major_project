@@ -10,14 +10,12 @@ class Transaction {
  
 
 
-  static newTransaction(speed, gps, alert, response, senderWallet, recipient) {
+  static newTransaction( alert, response, senderWallet, violated_vehicle) {
     const transaction = new this();
     var oppush = {};
-    oppush['Speed'] = speed;
-    oppush['GPS'] = gps;
     oppush['Alert'] = alert;
     oppush['Response'] = response;
-    oppush['Violated_vehicle'] = recipient;
+    oppush['Violated_vehicle'] = violated_vehicle;
     transaction.outputs.push(oppush);
 
     Transaction.signTransaction(transaction, senderWallet);
