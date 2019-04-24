@@ -5,7 +5,6 @@ const P2pServer = require('./p2p-server');
 const Wallet = require('../wallet');
 const TransacationPool = require('../wallet/transaction-pool');
 
-
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
 const app = express();
@@ -13,7 +12,6 @@ const bc = new Blockchain();
 const wallet = new Wallet();
 const tp = new TransacationPool();
 const p2pServer = new P2pServer(bc, tp);
-
 
 app.use(bodyParser.json());
 
@@ -36,9 +34,7 @@ app.post('/transact', (req, res) => {
 	res.redirect('/transactions');
 });
 
-app.get('/balance',(req,res)=>{
-	res.json({Balance: wallet.balance});
-});
+
 app.get('/public-key', (req, res) => {
 	res.json({ publicKey: wallet.publicKey});
 });
